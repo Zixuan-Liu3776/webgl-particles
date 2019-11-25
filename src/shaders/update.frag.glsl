@@ -42,7 +42,7 @@ void main() {
 
     vec2 velocity = mix(u_wind_min, u_wind_max, lookup_wind(pos));
     vec2 vort_vel = u_vortex_pos - pos;
-    vort_vel = normalize(vort_vel) * u_vertex_str / (0.001 + pow(vort_vel.x, 2) + pow(vort_vel.y, 2));
+    vort_vel = normalize(vort_vel) * u_vertex_str / (0.001 + pow(vort_vel.x, 2.0) + pow(vort_vel.y, 2.0));
     velocity = velocity + vort_vel;
     float speed_t = length(velocity) / length(u_wind_max);
 

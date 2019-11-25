@@ -2,6 +2,7 @@ precision highp float;
 
 uniform sampler2D u_particles;
 uniform sampler2D u_wind;
+uniform vec2 u_vortex_pos;
 uniform vec2 u_wind_res;
 uniform vec2 u_wind_min;
 uniform vec2 u_wind_max;
@@ -9,6 +10,7 @@ uniform float u_rand_seed;
 uniform float u_speed_factor;
 uniform float u_drop_rate;
 uniform float u_drop_rate_bump;
+uniform float u_vertex_str;
 
 varying vec2 v_tex_pos;
 
@@ -39,6 +41,9 @@ void main() {
         color.g / 255.0 + color.a); // decode particle position from pixel RGBA
 
     vec2 velocity = mix(u_wind_min, u_wind_max, lookup_wind(pos));
+    vec2 vort_vel = u_vortex_pos - pos;
+    vort_vel = normalize(vort_vel) * u_vertex_str / (0.001 + pow(vort_vel.x, 2) + pow(vort_vel.y, 2));
+    velocity = velocity + vort_vel;
     float speed_t = length(velocity) / length(u_wind_max);
 
     // take EPSG:4236 distortion into account for calculating where the particle moved

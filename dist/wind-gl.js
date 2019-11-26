@@ -117,7 +117,7 @@ var WindGL = function WindGL(gl) {
     this.dropRateBump = 0.01; // drop rate increase relative to individual particle speed
     this.vortexPosX = 0.5;
     this.vortexPosY = 0.5;
-    this.vortexStr = 0.1;
+    this.vortexStr = 0.15;
 
     this.drawProgram = createProgram(gl, drawVert, drawFrag);
     this.screenProgram = createProgram(gl, quadVert, screenFrag);

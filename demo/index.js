@@ -26,7 +26,7 @@ gui.add(wind, 'dropRate', 0, 0.1);
 gui.add(wind, 'dropRateBump', 0, 0.2);
 gui.add(wind, 'vortexPosX', 0, 1.0);
 gui.add(wind, 'vortexPosY', 0, 1.0);
-gui.add(wind, 'vortexStr', 0, 3.0).step(0.025);
+gui.add(wind, 'vortexStr', 0, 1.0).step(0.025);
 
 const windFiles = {
     0: '2016112000',
